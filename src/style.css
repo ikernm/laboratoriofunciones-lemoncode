@@ -112,7 +112,11 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;   
+  margin-top: 20px;
+}
+
+.boton:active {
+  transform: scale(0.9);
 }
 
 .agregar-turno-container {
