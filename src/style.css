@@ -115,6 +115,10 @@ button:focus-visible {
   margin-top: 20px;
 }
 
+.boton {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .boton:active {
   transform: scale(0.9);
 }
