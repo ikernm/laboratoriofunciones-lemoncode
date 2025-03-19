@@ -16,13 +16,13 @@ const actualizarTurno = () => {
     }
 };
 
-// Manejo del botón siguiente
+// Botón siguiente
 siguienteTurno.addEventListener("click", () => {
     turno++;
     actualizarTurno();
 });
 
-// Manejo del botón anterior
+// Botón anterior
 anteriorTurno.addEventListener("click", () => {
     if (turno > 1) {
         turno--;
@@ -30,13 +30,13 @@ anteriorTurno.addEventListener("click", () => {
     }
 });
 
-// Manejo del botón reiniciar
+// Botón reiniciar
 reiniciarTurno.addEventListener("click", () => {
     turno = 1;
     actualizarTurno();
 });
 
-// Manejo del botón para asignar un turno manualmente
+// Botón para asignar un turno manualmente
 agregarTurno.addEventListener("click", () => {
     const nuevoTurno = parseInt(inputTurno.value, 10);
     if (!isNaN(nuevoTurno) && nuevoTurno >= 1) {
