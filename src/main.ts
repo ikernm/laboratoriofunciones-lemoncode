@@ -1,50 +1,60 @@
 import "./style.css";
 
-const numeroTurno = document.getElementById("numero-turno") as HTMLHeadingElement;
-const siguienteTurno = document.getElementById("siguiente-turno") as HTMLButtonElement;
-const anteriorTurno = document.getElementById("anterior-turno") as HTMLButtonElement;
-const reiniciarTurno = document.getElementById("reiniciar-turno") as HTMLButtonElement;
-const inputTurno = document.getElementById("input-turno") as HTMLInputElement;
-const agregarTurno = document.getElementById("agregar-turno") as HTMLButtonElement;
+const numeroTurno = document.getElementById("numero-turno");
+const siguienteTurno = document.getElementById("siguiente-turno");
+const anteriorTurno = document.getElementById("anterior-turno");
+const reiniciarTurno = document.getElementById("reiniciar-turno");
+const inputTurno = document.getElementById("input-turno");
+const agregarTurno = document.getElementById("agregar-turno");
 
 let turno = 1;
 
 // Función para actualizar el turno en la pantalla
 const actualizarTurno = () => {
-    if (numeroTurno) {
+    if (numeroTurno && numeroTurno instanceof HTMLHeadingElement) {
         numeroTurno.textContent = turno.toString().padStart(2, '0');
     }
 };
 
 // Botón siguiente
-siguienteTurno.addEventListener("click", () => {
-    turno++;
-    actualizarTurno();
-});
+if (siguienteTurno !== null && siguienteTurno !== undefined && siguienteTurno instanceof HTMLButtonElement) {
+    siguienteTurno.addEventListener("click", () => {
+        turno++;
+        actualizarTurno();
+    });
+}
 
 // Botón anterior
-anteriorTurno.addEventListener("click", () => {
-    if (turno > 1) {
-        turno--;
-        actualizarTurno();
-    }
-});
+if (anteriorTurno !== null && anteriorTurno !== undefined && anteriorTurno instanceof HTMLButtonElement) {
+    anteriorTurno.addEventListener("click", () => {
+        if (turno > 1) {
+            turno--;
+            actualizarTurno();
+        }
+    });
+}
 
 // Botón reiniciar
-reiniciarTurno.addEventListener("click", () => {
-    turno = 1;
-    actualizarTurno();
-});
+if(reiniciarTurno !== null && reiniciarTurno !== undefined && reiniciarTurno instanceof HTMLButtonElement) {
+    reiniciarTurno.addEventListener("click", () => {
+        turno = 1;
+        actualizarTurno();
+    });
+}
 
 // Botón para asignar un turno manualmente
-agregarTurno.addEventListener("click", () => {
-    const nuevoTurno = parseInt(inputTurno.value, 10);
-    if (!isNaN(nuevoTurno) && nuevoTurno >= 1) {
-        turno = nuevoTurno;
-        actualizarTurno();
-        inputTurno.value = "";
-    }
-});
+if (agregarTurno  && agregarTurno instanceof HTMLButtonElement && inputTurno && inputTurno instanceof HTMLInputElement) {
+    agregarTurno.addEventListener("click", () => {
+        const nuevoTurno = parseInt(inputTurno.value, 10);
+        if (!isNaN(nuevoTurno) && nuevoTurno >= 1) {
+            turno = nuevoTurno;
+            actualizarTurno();
+            inputTurno.value = "";
+        }
+    });
+}
 
-// Inicializar el turno en pantalla
-actualizarTurno();
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar el turno en pantalla
+    actualizarTurno();
+})
